@@ -10,11 +10,13 @@ int main()
     time_t utcTime_fromPLC = 0;
     struct tm Local_time;
     ptm = &Local_time;
+    long yyyy;
     utcTime_fromPLC = utcSecs_fromPLC;
     localtime_s(ptm, &utcTime_fromPLC);  //convert time_t value to tm structure; local time  
 
     std::cout << "Hello World!\n";
-    std::cout << Local_time.tm_year;
+    yyyy = 1900 + Local_time.tm_year;
+    std::cout << yyyy;
     std::cout << "-";
     std::cout << Local_time.tm_mon;
     std::cout << "-";
