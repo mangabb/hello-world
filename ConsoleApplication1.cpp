@@ -6,17 +6,20 @@
 int main()
 {
     struct tm* ptm;
-    long utcSecs_fromPLC = 1625170946;  // 7/1/2021 16:12 EDT
-    time_t utcTime_fromPLC = 0;
+    long utcSecs;  
+    time_t utcTime = 0;
     struct tm Local_time;
     ptm = &Local_time;
-    long yyyy;
-    utcTime_fromPLC = utcSecs_fromPLC;
-    localtime_s(ptm, &utcTime_fromPLC);  //convert time_t value to tm structure; local time  
+    long yyyy,mmm;
+    utcSecs = time(NULL);
+    utcTime = utcSecs;
+    localtime_s(ptm, &utcTime);  //convert time_t value to tm structure; local time  
 
     std::cout << "Hello World!\n";
-    yyyy = 1900 + Local_time.tm_year;
-    std::cout << yyyy;
+    yyyy = 1900 + Local_time.tm_year; // year since 1900
+    mmm = Local_time.tm_mon + 1; // starts at 0
+    std::cout << "Results from localtime_s: ";
+    std::cout << Local_time.tm_year;
     std::cout << "-";
     std::cout << Local_time.tm_mon;
     std::cout << "-";
@@ -27,6 +30,9 @@ int main()
     std::cout << Local_time.tm_min;
     std::cout << ":";
     std::cout << Local_time.tm_sec;
+    printf("\n\nYEAR and MONTH require additional conversions\n");
+    printf("Date is: %4.4d-%2.2d-%2.2d\n", yyyy, mmm, Local_time.tm_mday);
+    printf("Time is: %2.2d:%2.2d:%2.2d\n", Local_time.tm_hour, Local_time.tm_min, Local_time.tm_sec);
     std::cout << "\nEnd of program";
 
 
