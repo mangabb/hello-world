@@ -6,7 +6,7 @@
 int main()
 {
     struct tm* ptm;
-    long utcSecs_fromPLC = 1625170346;  // 7/1/2021 16:12 EDT
+    long utcSecs_fromPLC = 1625170946;  // 7/1/2021 16:12 EDT
     time_t utcTime_fromPLC = 0;
     struct tm Local_time;
     ptm = &Local_time;
@@ -15,12 +15,17 @@ int main()
 
     std::cout << "Hello World!\n";
     std::cout << Local_time.tm_year;
+    std::cout << "-";
     std::cout << Local_time.tm_mon;
+    std::cout << "-";
     std::cout << Local_time.tm_mday;
     std::cout << "...";
     std::cout << Local_time.tm_hour;
+    std::cout << ":";
     std::cout << Local_time.tm_min;
+    std::cout << ":";
     std::cout << Local_time.tm_sec;
+    std::cout << "\nEnd of program";
 
 
 }
